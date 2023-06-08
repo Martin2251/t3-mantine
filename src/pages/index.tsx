@@ -3,8 +3,10 @@ import { type NextPage } from "next";
 
 import Head from "next/head";
 
-import { ActionIcon, AppShell, Button, Group, Header, Navbar, useMantineColorScheme } from "@mantine/core";
+import { ActionIcon, AppShell, Box, Button, Group, Header, Navbar, rem, useMantineColorScheme } from "@mantine/core";
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
+import { MainLinks } from "~/components/shell/_main-links";
+import { User } from "~/components/shell/_user";
 
 const Home: NextPage = () => {
   
@@ -22,7 +24,16 @@ const Home: NextPage = () => {
   */}
    <AppShell
       padding="md"
-      navbar={<Navbar width={{ base: 300 }} height="100%" p="xs">{/* Navbar content */}</Navbar>}
+      navbar={
+        <Navbar p="xs" width={{ base: 300 }}>
+      <Navbar.Section grow mt="md">
+        <MainLinks />
+      </Navbar.Section>
+      <Navbar.Section>
+        <User />
+      </Navbar.Section>
+    </Navbar>
+      }
       header={<Header height={60} p="xs">{/* Header content */}</Header>}
       styles={(theme) => ({
         main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
