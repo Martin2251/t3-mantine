@@ -8,9 +8,9 @@ export function User() {
   const theme = useMantineTheme();
   const user = useSession();
 
-  if (!user.data){
-    return null
-  }
+  // if (!user.data){
+  //   return null
+  // }
 
   return (
     <Box
@@ -41,15 +41,16 @@ export function User() {
         <Menu.Target>
         <Group>
           <Avatar
-            src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=255&q=80"
+          imageProps={{referrerPolicy: "no-referrer"}}
+            src={user.data.user.image}
             radius="xl"
           />
           <Box sx={{ flex: 1 }}>
             <Text size="sm" weight={500}>
-              Amy Horsefighter
+              {user.data.user.name}
             </Text>
             <Text color="dimmed" size="xs">
-              ahorsefighter@gmail.com
+           {user.data.user.email}
             </Text>
           </Box>
 
